@@ -1,6 +1,7 @@
 import tkinter
 from tkinter import *
 import time
+from Alarm_clock.alarm import *
 from tkinter import font
 from winsound import *
 
@@ -80,7 +81,7 @@ def countdown():
     play()
 
 def run_timer():
-    master = Tk()
+    master = Toplevel(root)
     master.title("Timer")
     master.geometry("500x400")
     master.configure(bg="red")
@@ -92,6 +93,7 @@ def run_timer():
     askLabel.configure(width=21, bg="black", fg="white", font=5)
     askLabel.grid(column=1, row=2)
 
+    global targetLabel
     targetLabel = Label(frame1, text="Target Time: ")
     targetLabel.configure(width=21, bg="black", fg="white")
     targetLabel.grid(column=1, row=5)
@@ -125,12 +127,15 @@ def run_timer():
     secondLabel.configure(width=10)
     secondLabel.grid(column=3, row=0)
 
+    global hours
     hours = Spinbox(frame2, from_=0, to=23, state="readonly")
     hours.configure(width=10)
     hours.grid(column=1, row=1)
+    global minutes
     minutes = Spinbox(frame2, from_=0, to=59, state="readonly")
     minutes.configure(width=10)
     minutes.grid(column=2, row=1)
+    global seconds
     seconds = Spinbox(frame2, from_=0, to=59, state="readonly")
     seconds.configure(width=10)
     seconds.grid(column=3, row=1)
